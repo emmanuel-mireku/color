@@ -1,0 +1,130 @@
+- let backgroundRGB = `background-color: ${rgbVal}`;
+- let backgroundGradient = `background-image: ${gradient.gradient}`;
+- let degreeValue = gradient.deg;
+- let color1RedValue = gradient.col1.r;
+- let color1GreenValue = gradient.col1.g;
+- let color1BlueValue = gradient.col1.b;
+- let color1Alpha = gradient.col1.a;
+- let color1Percentage = gradient.p1;
+- let color2RedValue = gradient.col2.r;
+- let color2GreenValue = gradient.col2.g;
+- let color2BlueValue = gradient.col2.b;
+- let color2Alpha = gradient.col2.a;
+- let color2Percentage = gradient.p2;
+
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css?family=Bungee|Roboto&display=swap', rel='stylesheet')
+    link(rel='stylesheet', href='css/stylesSheet.css')
+    link(rel='stylesheet', href='css/uikit.min.css')
+    script(src='js/uikit.min.js', defer='')
+    script(src='js/uikit-icons.min.js', defer='')
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=", crossorigin="anonymous", defer="")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js', integrity='sha256-7sov0P4cWkfKMVHQ/NvnWVqcLSPYrPwxdz+MtZ+ahl8=', crossorigin='anonymous', defer='')
+    script(src='js/client.js', defer='')
+    title Color Generator
+body
+    main
+        h1.uk-margin.uk-text-center.uk-margin-top.title color.
+        section.uk-flex.uk-flex-wrap.uk-flex-center.uk-flex-around.uk-flex-between(uk-scrollspy='target: > a; cls: uk-animation-fade; delay: 500; repeat: false')
+            a#rgb.uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-transition-toggle.uk-border-rounded(style= backgroundRGB, uk-toggle='', href='#modal-rgb')
+                .uk-transition-fade.uk-flex
+                    h5
+            #modal-rgb.uk-modal-full(uk-modal='')
+                .uk-modal-dialog
+                    button.uk-modal-close-full.uk-close-small(type='button', uk-close='')
+                    .uk-grid-collapse(class='uk-child-width-1-2@s', uk-grid='')
+                        #rgb-modal.uk-background-cover(uk-height-viewport='', style= backgroundRGB)
+                        .uk-padding-large
+                            a#randomize-rgb( uk-icon='icon: bolt') randomize #{"  "}
+                            hr.uk-divider-small
+                            a(href='#toggle-rgb' uk-toggle='target: #toggle-rgb; animation: uk-animation-slide-top uk-animation-slide-bottom' uk-icon='icon: code') get code #{"  "}
+                            #toggle-rgb.uk-card.uk-card-default.uk-card-body.uk-border-rounded.uk-margin-small.uk-box-shadow-small.uk-box-shadow-hover-large(hidden='')
+                                span#rgb-code.uk-text-small.uk-text-lighter #{backgroundRGB}
+                            hr.uk-divider-small
+                            a(href='#toggle-rgb-edit' uk-toggle='target: #toggle-rgb-edit; animation: uk-animation-slide-top uk-animation-slide-bottom' uk-icon='icon: settings') edit #{"  "}
+                            #toggle-rgb-edit.uk-card.uk-card-default.uk-card-body.uk-border-rounded.uk-margin-small.uk-box-shadow-small.uk-box-shadow-hover-large(hidden)
+                                #rgb-red
+                                    p.uk-text-lighter.uk-margin-remove red: #{" "}
+                                        span #{rgbRed}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= rgbRed, max= 255)
+                                #rgb-green
+                                    p.uk-text-lighter.uk-margin-remove green: #{" "}
+                                        span #{rgbGreen}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= rgbGreen, max= 255)
+                                #rgb-blue
+                                    p.uk-text-lighter.uk-margin-remove blue: #{" "}
+                                        span #{rgbBlue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= rgbBlue, max= 255)
+                            hr.uk-divider-small
+                            a(href='#toggle-rgb-name' uk-toggle='target: #toggle-rgb-name; animation: uk-animation-slide-top uk-animation-slide-bottom' uk-icon='icon: info') get name #{"  "}
+                            #toggle-rgb-name.uk-card.uk-card-default.uk-card-body.uk-border-rounded.uk-margin-small.uk-box-shadow-small.uk-box-shadow-hover-large(hidden)
+                                span#rgb-name
+                                    p1 #{colorName}
+            a#gradient.uk-card.uk-card-default.uk-card-hover.uk-card-body.uk-transition-toggle.uk-border-rounded(style= backgroundGradient, uk-toggle='', href='#modal-gradient')
+            #modal-gradient.uk-modal-full(uk-modal='')
+                .uk-modal-dialog
+                    button.uk-modal-close-full.uk-close-small(type='button', uk-close='')
+                    .uk-grid-collapse(class='uk-child-width-1-2@s', uk-grid='')
+                        #gradient-modal.uk-background-cover(uk-height-viewport='', style= backgroundGradient)
+                        .uk-padding-large
+                            a#randomize-gradient( uk-icon='icon: bolt') randomize #{"  "}
+                            hr.uk-divider-small
+                            a(href='#toggle-gradient' uk-toggle='target: #toggle-gradient; animation: uk-animation-slide-top uk-animation-slide-bottom' uk-icon='icon: code') get code #{"  "}
+                            #toggle-gradient.uk-card.uk-card-default.uk-card-body.uk-border-rounded.uk-margin-small.uk-box-shadow-small.uk-box-shadow-hover-large(hidden='')
+                                span#gradient-name.uk-text-small.uk-text-lighter #{backgroundGradient}
+                            hr.uk-divider-small
+                            a(href='#toggle-gradient-edit' uk-toggle='target: #toggle-gradient-edit; animation: uk-animation-slide-top uk-animation-slide-bottom' uk-icon='icon: settings') edit #{"  "}
+                            #toggle-gradient-edit.uk-card.uk-card-default.uk-card-body.uk-border-rounded.uk-margin-small.uk-box-shadow-small.uk-box-shadow-hover-large(hidden)
+                                #degree
+                                    p.uk-text-lighter.uk-margin-remove degree: #{" "}
+                                        span #{degreeValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= degreeValue, max= 360)
+                                h6 First Color
+                                hr
+                                #red1
+                                    p.uk-text-lighter.uk-margin-remove red: #{" "}
+                                        span #{degreeValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color1RedValue, max= 255)
+                                #green1
+                                    p.uk-text-lighter.uk-margin-remove green: #{" "}
+                                        span #{color1GreenValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color1GreenValue, max= 255)
+                                #blue1
+                                    p.uk-text-lighter.uk-margin-remove blue: #{" "}
+                                        span #{color1BlueValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color1BlueValue, max= 255)
+                                #alpha1
+                                    p.uk-text-lighter.uk-margin-remove alpha: #{" "}
+                                        span #{color1Alpha}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color1Alpha, max= 1, step= 0.01, min= 0)
+                                #percent1
+                                    p.uk-text-lighter.uk-margin-remove percent: #{" "}
+                                        span #{color1Percentage}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color1Percentage, max= 100)
+                                h6 Second Color
+                                hr
+                                #red2
+                                    p.uk-text-lighter.uk-margin-remove red: #{" "}
+                                        span #{color2RedValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color2RedValue, max= 255)
+                                #green2
+                                    p.uk-text-lighter.uk-margin-remove green: #{" "}
+                                        span #{color2GreenValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color2GreenValue, max= 255)
+                                #blue2
+                                    p.uk-text-lighter.uk-margin-remove blue: #{" "}
+                                        span #{color2BlueValue}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color2BlueValue, max= 255)
+                                #alpha2
+                                    p.uk-text-lighter.uk-margin-remove alpha: #{" "}
+                                        span #{color2Alpha}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color2Alpha, max= 1, step= 0.01, min= 0)
+                                #percent2
+                                    p.uk-text-lighter.uk-margin-remove percent: #{" "}
+                                        span #{color2Percentage}
+                                    input.degree-bar.uk-text-lighter.uk-margin-remove-top(type= "range", value= color2Percentage, max= 100)
+
+
