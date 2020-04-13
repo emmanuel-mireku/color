@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 
-app.use('/favicon.ico', express.static('images/favicon.ico'))
+// app.use('/favicon.ico', express.static('public/images/favicon.ico'))
 
 // route for page
 app.use('/', indexPage);
