@@ -9,6 +9,7 @@
   "author": "Emmanuel Mireku",
   "license": "ISC",
   "dependencies": {
+    "acorn": "^7.1.1",
     "axios": "^0.19.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
