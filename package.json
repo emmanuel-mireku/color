@@ -4,7 +4,7 @@
   "description": "Fun project about colors",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js"
+    "start": "node app.js"
   },
   "author": "Emmanuel Mireku",
   "license": "ISC",
@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+"engines": {
+  "node": "10.x"
+}
 }
