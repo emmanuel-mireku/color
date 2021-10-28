@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios').default;
+const colorNames = require('color-names');
 
 const router = express.Router();
 
@@ -48,6 +49,10 @@ const gradientGenerator = () => {
 
 router.get('/', (req, res) => {
     let randomColor = rGBAGenerator();
+    // console.log(`#${rGBAtoHex(rGBAGenerator().rgba)}`);
+    // console.log(colorNames[`#${rGBAtoHex(rGBAGenerator().rgba)}`]);
+    // console.log(colorNames[`#${rGBAtoHex(rGBAGenerator().rgba)}`]);
+    // console.log(colorNames["#685558"]);
     let randomColorHex = rGBAtoHex(randomColor.rgba);
     let randomGradient = gradientGenerator();
     axios.get(`http://thecolorapi.com/id?hex=${randomColorHex}`)
@@ -66,11 +71,21 @@ router.get('/', (req, res) => {
 });
 
 
+
+
+
 router.post('/', (req, res) => {
-    axios.get(`http://thecolorapi.com/id?rgb=${req.body.c}`)
-        .then(response => {
-            return res.json({name: response.data.name.value});
+    if (colorNames[`#${rGBAtoHex(req.body.c)}`] !== undefined){
+        return res.json({name: colorNames[`#${rGBAtoHex(req.body.c)}`]})
+    } else{
+        axios.get(`http://thecolorapi.com/id?rgb=${req.body.c}`)
+            .then(response => {
+                return res.json({name: response.data.name.value});
+            }).catch(error => {
+            console.error("Error:", error)
         });
+    }
+
 });
 
 

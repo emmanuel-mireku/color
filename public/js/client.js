@@ -66,6 +66,8 @@ for (let i = 0; i < rgbElements.length; i++) {
             return response.json();
         }).then(data => {
             document.getElementById("rgb-name").innerText = data.name;
+        }).catch(error => {
+            console.error("Error:", error);
         })
     });
 }
